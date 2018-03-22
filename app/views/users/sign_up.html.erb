@@ -1,0 +1,42 @@
+	<div id="container">
+		<% flash.each do |key, message| %>
+			<p class="<%= key %>"><%= message %></p>
+		<% end %>
+		<%= form_for @user, url: {action: "create"}, html: {class: 'forms form-horizontal'} do |f| %>
+		<h1><span class="log-in">регистрация</span> </h1>
+
+		<div class="form-group">
+			<%= f.label "Имя", class: 'col-sm-2' %>
+			<div class="col-sm-12">
+				<%= f.text_field :name, class: 'form-control', placeholder: "Name" %>
+			</div>
+		</div>
+		<div class="form-group">
+			<%= f.label "Почта:", for: :email, class: 'col-sm-2' %>
+			<div class="col-sm-12">
+				<%= f.text_field :email, class: 'form-control', placeholder: "Email" %>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<%= f.label "Пароль:", class: 'col-sm-2' %>
+			<div class="col-sm-12">
+				<%= f.password_field "password", class: 'form-control', placeholder: "Password" %>
+			</div>
+		</div>
+		<div class="form-group">
+			<%= f.label "Повтор пароля", class: 'col-sm-5' %>
+			<div class="col-sm-12">
+				<%= f.password_field :password_confirmation, class: 'form-control', placeholder: "Password confirmation"%>
+			</div>
+		</div>
+		<p class="col-sm-12">
+			Уже есть аккаунт? 
+			<%= link_to "Войти", sign_in_path %>
+		</p>
+
+		<div class="col-sm-offset-2 col-sm-10">
+			<button type="submit" class="btn btn-darger">Зарегестрироваться</button>
+		</div>
+		<% end %>
+	</div>

@@ -1,0 +1,32 @@
+<div id="container" class="container">
+  <%= render 'layouts/flashes' %>
+  <%= link_to "Добавить слово", new_word_path %>
+  <% if not @words.empty? %>
+  <table border="1" width="100%" class="table">
+    <thead class="thead-default">   
+      <tr>
+        <th>#</th>
+        <th>Русский (ru)</th>
+        <th>Английский (en)</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @words.each do |word| %>
+      <tr>
+        <td><%= word.id %></td>
+        <td><%= word.ru %></td>
+        <td><%= word.en %></td>
+        <td>
+          <%= link_to "Удалить", {action: "destroy", id:word.id}, method: :delete %>,
+          <%= link_to "Редактировать", edit_word_path(word) %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</div>
+</body>
+</html>

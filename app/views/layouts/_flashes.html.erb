@@ -1,0 +1,7 @@
+<% if !flash.empty? %>
+	<div class="alert alert-success" role="alert">
+		<% flash.each do |key, message| %>
+  		<p class="<%= key %>"><%= message %></p>
+  	<% end %>
+	</div>
+	<% end %>
